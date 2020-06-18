@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--This file was written by TinyCAD 3.00.02 Production Release
+If you wish to view this file go to https://www.tinycad.net to
+download the executable.-->
+<TinyCADSheets>
+	<TinyCAD>
+		<NAME>Gyro </NAME>
+		<DETAILS>
+			<Size width='1485' height='1050'/>
+			<GUIDES horiz='7' vert='5'/>
+			<TITLE>Finger tilt switch</TITLE>
+			<AUTHOR>GCL</AUTHOR>
+			<REVISION>0.1</REVISION>
+			<DOCNUMBER>SCM20052</DOCNUMBER>
+			<ORGANISATION>Celtic Magic</ORGANISATION>
+			<SHEETS>1</SHEETS>
+			<SHOWS>3</SHOWS>
+			<DATE>15/6/20</DATE>
+			<GRID spacing='50.00000' snap='1'/>
+		</DETAILS>
+		<FONT id='0'>
+			<HEIGHT>-13</HEIGHT>
+			<WIDTH>6</WIDTH>
+			<WEIGHT>400</WEIGHT>
+			<ITALIC>0</ITALIC>
+			<UNDERLINE>0</UNDERLINE>
+			<STRIKEOUT>0</STRIKEOUT>
+			<CHARSET>0</CHARSET>
+			<FACENAME>Arial</FACENAME>
+		</FONT>
+		<FONT id='1'>
+			<HEIGHT>-10</HEIGHT>
+			<WIDTH>0</WIDTH>
+			<WEIGHT>400</WEIGHT>
+			<ITALIC>0</ITALIC>
+			<UNDERLINE>0</UNDERLINE>
+			<STRIKEOUT>0</STRIKEOUT>
+			<CHARSET>0</CHARSET>
+			<FACENAME>Arial</FACENAME>
+		</FONT>
+		<FONT id='3'>
+			<HEIGHT>-13</HEIGHT>
+			<WIDTH>6</WIDTH>
+			<WEIGHT>400</WEIGHT>
+			<ITALIC>0</ITALIC>
+			<UNDERLINE>0</UNDERLINE>
+			<STRIKEOUT>0</STRIKEOUT>
+			<CHARSET>0</CHARSET>
+			<FACENAME>Arial</FACENAME>
+		</FONT>
+		<FONT id='4'>
+			<HEIGHT>-13</HEIGHT>
+			<WIDTH>6</WIDTH>
+			<WEIGHT>400</WEIGHT>
+			<ITALIC>0</ITALIC>
+			<UNDERLINE>0</UNDERLINE>
+			<STRIKEOUT>0</STRIKEOUT>
+			<CHARSET>0</CHARSET>
+			<FACENAME>Arial</FACENAME>
+		</FONT>
+		<FONT id='5'>
+			<HEIGHT>-13</HEIGHT>
+			<WIDTH>6</WIDTH>
+			<WEIGHT>400</WEIGHT>
+			<ITALIC>0</ITALIC>
+			<UNDERLINE>0</UNDERLINE>
+			<STRIKEOUT>0</STRIKEOUT>
+			<CHARSET>0</CHARSET>
+			<FACENAME>Arial</FACENAME>
+		</FONT>
+		<FONT id='6'>
+			<HEIGHT>-13</HEIGHT>
+			<WIDTH>6</WIDTH>
+			<WEIGHT>400</WEIGHT>
+			<ITALIC>0</ITALIC>
+			<UNDERLINE>0</UNDERLINE>
+			<STRIKEOUT>0</STRIKEOUT>
+			<CHARSET>0</CHARSET>
+			<FACENAME>Arial</FACENAME>
+		</FONT>
+		<FONT id='7'>
+			<HEIGHT>-13</HEIGHT>
+			<WIDTH>6</WIDTH>
+			<WEIGHT>400</WEIGHT>
+			<ITALIC>0</ITALIC>
+			<UNDERLINE>0</UNDERLINE>
+			<STRIKEOUT>0</STRIKEOUT>
+			<CHARSET>0</CHARSET>
+			<FACENAME>Arial</FACENAME>
+		</FONT>
+		<FONT id='8'>
+			<HEIGHT>-13</HEIGHT>
+			<WIDTH>6</WIDTH>
+			<WEIGHT>400</WEIGHT>
+			<ITALIC>0</ITALIC>
+			<UNDERLINE>0</UNDERLINE>
+			<STRIKEOUT>0</STRIKEOUT>
+			<CHARSET>0</CHARSET>
+			<FACENAME>Arial</FACENAME>
+		</FONT>
+		<STYLE id='1'>
+			<STYLE>1</STYLE>
+			<COLOR>000000</COLOR>
+			<THICKNESS>1</THICKNESS>
+		</STYLE>
+		<STYLE id='4'>
+			<STYLE>0</STYLE>
+			<COLOR>000000</COLOR>
+			<THICKNESS>1</THICKNESS>
+		</STYLE>
+		<STYLE id='5'>
+			<STYLE>0</STYLE>
+			<COLOR>FFFFFF</COLOR>
+			<THICKNESS>1</THICKNESS>
+		</STYLE>
+		<FILL id='0'>
+			<INDEX>-1</INDEX>
+			<COLOR>000000</COLOR>
+		</FILL>
+		<SYMBOLDEF id='1'>
+			<NAME type='0'>R_POT</NAME>
+			<REF type='1'>R?</REF>
+			<DESCRIPTION>Potentiometer</DESCRIPTION>
+			<PPP>1</PPP>
+			<GUID></GUID>
+			<FIELD>
+				<NAME>Package</NAME>
+				<DEFAULT></DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Value_Hi</NAME>
+				<DEFAULT>..</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Value_Low</NAME>
+				<DEFAULT>..</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>P_Max</NAME>
+				<DEFAULT>..</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Progression</NAME>
+				<DEFAULT>..</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Manufacturer</NAME>
+				<DEFAULT>..</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Manufacturer Part</NAME>
+				<DEFAULT>..</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Digi-Key Part</NAME>
+				<DEFAULT>..</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Newark Part</NAME>
+				<DEFAULT>..</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Mouser Part</NAME>
+				<DEFAULT>..</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<FIELD>
+				<NAME>Cost</NAME>
+				<DEFAULT>..</DEFAULT>
+				<FT>000001</FT>
+				<VALUE></VALUE>
+				<POS>0.00000,0.00000</POS>
+			</FIELD>
+			<REF_POINT power='0' part='0' pos='76.00000,51.00000'/>
+			<TinyCAD>
+				<PIN pos='70.00000,37.00000' which='0' elec='4' direction='1' part='0' number='2' show='0' length='15' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='70.00000,51.00000' which='0' elec='4' direction='0' part='0' number='1' show='0' length='15' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='76.00000,44.00000' which='0' elec='4' direction='2' part='0' number='3' show='0' length='15' number_pos='0' centre_name='0'>adj</PIN>
+				<POLYGON pos='69.00000,40.60000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,1.00000' arc='0'/>
+					<POINT pos='1.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='69.00000,41.60000' style='4' fill='0' polygon='0'>
+					<POINT pos='2.00000,1.00000' arc='0'/>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='69.00000,42.60000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,1.00000' arc='0'/>
+					<POINT pos='2.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='69.00000,43.60000' style='4' fill='0' polygon='0'>
+					<POINT pos='2.00000,1.00000' arc='0'/>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='69.00000,44.60000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,1.00000' arc='0'/>
+					<POINT pos='2.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='69.00000,45.60000' style='4' fill='0' polygon='0'>
+					<POINT pos='2.00000,1.00000' arc='0'/>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='70.00000,46.60000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,1.00000' arc='0'/>
+					<POINT pos='1.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='70.00000,47.60000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+					<POINT pos='0.00000,0.40000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='70.00000,40.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.60000' arc='0'/>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='71.00000,44.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='2.00000,0.00000' arc='0'/>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='71.00000,43.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,1.00000' arc='0'/>
+					<POINT pos='1.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='71.00000,44.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+					<POINT pos='1.00000,1.00000' arc='0'/>
+				</POLYGON>
+			</TinyCAD>
+		</SYMBOLDEF>
+		<SYMBOLDEF id='2'>
+			<NAME type='0'>LED</NAME>
+			<REF type='0'>D?</REF>
+			<DESCRIPTION>Light Emitting Diode</DESCRIPTION>
+			<PPP>1</PPP>
+			<GUID></GUID>
+			<REF_POINT power='0' part='0' pos='62.00000,53.00000'/>
+			<TinyCAD>
+				<PIN pos='58.00000,46.00000' which='5' elec='4' direction='1' part='0' number='1' show='0' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='58.00000,53.00000' which='5' elec='4' direction='0' part='0' number='2' show='0' length='30' number_pos='0' centre_name='0'></PIN>
+				<POLYGON pos='60.40000,48.60000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.80000,0.00000' arc='0'/>
+					<POINT pos='0.00000,1.20000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='56.40000,48.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+					<POINT pos='3.20000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='56.40000,51.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+					<POINT pos='3.20000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='58.00000,51.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+					<POINT pos='0.00000,2.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='58.00000,48.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='1.60000,0.00000' arc='0'/>
+					<POINT pos='0.00000,3.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='56.40000,48.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='1.60000,3.00000' arc='0'/>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='59.80000,49.20000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+					<POINT pos='0.60000,0.60000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='59.80000,48.60000' style='4' fill='0' polygon='0'>
+					<POINT pos='1.40000,0.00000' arc='0'/>
+					<POINT pos='0.00000,0.60000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='59.00000,48.80000' style='4' fill='0' polygon='0'>
+					<POINT pos='2.00000,0.00000' arc='0'/>
+					<POINT pos='0.00000,1.60000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='58.00000,46.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+					<POINT pos='0.00000,2.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='60.20000,49.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.60000,0.00000' arc='0'/>
+					<POINT pos='0.00000,0.60000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='60.00000,49.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.60000,0.00000' arc='0'/>
+					<POINT pos='0.00000,0.20000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='60.00000,49.20000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+					<POINT pos='0.20000,0.20000' arc='0'/>
+				</POLYGON>
+			</TinyCAD>
+		</SYMBOLDEF>
+		<SYMBOLDEF id='3'>
+			<NAME type='0'>SWITCH1</NAME>
+			<REF type='0'>S?</REF>
+			<DESCRIPTION>Single Pole Push Switch</DESCRIPTION>
+			<PPP>1</PPP>
+			<GUID></GUID>
+			<REF_POINT power='0' part='0' pos='84.00000,53.00000'/>
+			<TinyCAD>
+				<PIN pos='83.00000,53.00000' which='0' elec='4' direction='0' part='0' number='2' show='0' length='30' number_pos='0' centre_name='0'></PIN>
+				<PIN pos='83.00000,33.00000' which='0' elec='4' direction='1' part='0' number='1' show='0' length='30' number_pos='0' centre_name='0'></PIN>
+				<POLYGON pos='81.00000,39.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,8.00000' arc='0'/>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='80.00000,43.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='1.00000,0.00000' arc='0'/>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<POLYGON pos='80.00000,42.00000' style='4' fill='0' polygon='0'>
+					<POINT pos='0.00000,2.00000' arc='0'/>
+					<POINT pos='0.00000,0.00000' arc='0'/>
+				</POLYGON>
+				<ELLIPSE a='82.00000,45.00000' b='84.00000,47.00000' style='4' fill='0'/>
+				<ELLIPSE a='82.00000,41.00000' b='84.00000,39.00000' style='4' fill='0'/>
+			</TinyCAD>
+		</SYMBOLDEF>
+		<OPTIONS>
+			<GRID>0</GRID>
+			<UNITS>0</UNITS>
+			<COLOR_WIRE>FF0000</COLOR_WIRE>
+			<COLOR_BUS>0000FF</COLOR_BUS>
+			<COLOR_JUNCTION>000000</COLOR_JUNCTION>
+			<COLOR_NOCONNECT>000000</COLOR_NOCONNECT>
+			<COLOR_LABEL>208000</COLOR_LABEL>
+			<COLOR_POWER>000000</COLOR_POWER>
+			<COLOR_PIN>4040C0</COLOR_PIN>
+			<COLOR_HIDDEN_PIN>208020</COLOR_HIDDEN_PIN>
+			<COLOR_BACKGROUND>FFFFFF</COLOR_BACKGROUND>
+			<COLOR_NOTETEXT_FILL>AFFFFF</COLOR_NOTETEXT_FILL>
+			<COLOR_NOTETEXT_LINE>FF0000</COLOR_NOTETEXT_LINE>
+			<COLOR_NOTETEXT_TEXT>FF0000</COLOR_NOTETEXT_TEXT>
+		</OPTIONS>
+		<RECTANGLE a='130.00000,61.00000' b='151.00000,126.00000' style='4' fill='0'/>
+		<RECTANGLE a='222.00000,62.00000' b='250.00000,125.00000' style='4' fill='0'/>
+		<WIRE a='151.00000,68.00000' b='222.00000,68.00000'/>
+		<WIRE a='151.00000,88.00000' b='222.00000,88.00000'/>
+		<WIRE a='151.00000,107.00000' b='222.00000,107.00000'/>
+		<WIRE a='151.00000,112.00000' b='222.00000,112.00000'/>
+		<WIRE a='151.00000,117.00000' b='222.00000,117.00000'/>
+		<TEXT pos='147.00000,69.00000' direction='3' font='7' color='000000'>5v</TEXT>
+		<TEXT pos='144.00000,89.00000' direction='3' font='7' color='000000'>Gnd</TEXT>
+		<TEXT pos='226.00000,70.00000' direction='3' font='7' color='000000'>Vcc</TEXT>
+		<TEXT pos='227.00000,69.00000' direction='3' font='7' color='000000'> </TEXT>
+		<TEXT pos='225.00000,69.00000' direction='3' font='7' color='000000'> </TEXT>
+		<TEXT pos='225.00000,89.00000' direction='3' font='7' color='000000'>Gnd</TEXT>
+		<TEXT pos='148.00000,118.00000' direction='3' font='7' color='000000'>7</TEXT>
+		<TEXT pos='225.00000,118.00000' direction='3' font='7' color='000000'>INT</TEXT>
+		<TEXT pos='225.00000,108.00000' direction='3' font='7' color='000000'>SCL</TEXT>
+		<TEXT pos='225.00000,113.00000' direction='3' font='7' color='000000'>SDA</TEXT>
+		<TEXT pos='187.00000,111.00000' direction='3' font='7' color='000000'> </TEXT>
+		<TEXT pos='148.00000,113.00000' direction='3' font='7' color='000000'>2</TEXT>
+		<TEXT pos='148.00000,109.00000' direction='3' font='7' color='000000'>3</TEXT>
+		<POWER pos='162.00000,88.00000' which='0' direction='1'>0v</POWER>
+		<POWER pos='162.00000,68.00000' which='0' direction='0'>5v</POWER>
+		<TEXT pos='149.00000,78.00000' direction='3' font='7' color='000000'>9</TEXT>
+		<TEXT pos='133.00000,130.00000' direction='3' font='7' color='000000'>5v Pro Micro</TEXT>
+		<TEXT pos='232.00000,129.00000' direction='3' font='7' color='000000'>Gy-521</TEXT>
+		<WIRE a='85.00000,66.00000' b='130.00000,66.00000'/>
+		<TEXT pos='132.00000,68.00000' direction='3' font='7' color='000000'>4</TEXT>
+		<TEXT pos='27.00000,146.00000' direction='3' font='6' color='000000'> </TEXT>
+		<TEXT pos='24.00000,173.00000' direction='3' font='5' color='000000'> </TEXT>
+		<TEXT pos='51.00000,190.00000' direction='3' font='5' color='000000'> </TEXT>
+		<TEXT pos='51.00000,190.00000' direction='3' font='5' color='000000'> </TEXT>
+		<TEXT pos='285.00000,97.00000' direction='3' font='5' color='000000'> </TEXT>
+		<SYMBOL id='1' pos='91.00000,94.00000' part='0' rotate='3' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
+			<FIELD type='1' description='Ref' value='R?' show='0' pos='-14.00000,2.00000'/>
+			<FIELD type='0' description='Name' value='Sensitivity' show='1' pos='-27.00000,-4.00000'/>
+			<FIELD type='1' description='Package' value='' show='0' pos='-14.00000,4.40000'/>
+			<FIELD type='1' description='Value_Hi' value='10k' show='1' pos='-9.00000,-8.20000'/>
+			<FIELD type='1' description='Value_Low' value='..' show='0' pos='-14.00000,9.20000'/>
+			<FIELD type='1' description='P_Max' value='..' show='0' pos='-14.00000,11.60000'/>
+			<FIELD type='1' description='Progression' value='..' show='0' pos='-14.00000,14.00000'/>
+			<FIELD type='1' description='Manufacturer' value='..' show='0' pos='-14.00000,16.40000'/>
+			<FIELD type='1' description='Manufacturer Part' value='..' show='0' pos='-14.00000,18.80000'/>
+			<FIELD type='1' description='Digi-Key Part' value='..' show='0' pos='-14.00000,21.20000'/>
+			<FIELD type='1' description='Newark Part' value='..' show='0' pos='-14.00000,23.60000'/>
+			<FIELD type='1' description='Mouser Part' value='..' show='0' pos='-14.00000,26.00000'/>
+			<FIELD type='1' description='Cost' value='..' show='0' pos='-14.00000,28.40000'/>
+			<HINT pin='1' net='1'/>
+			<HINT pin='2' net='2'/>
+			<HINT pin='3' net='9'/>
+		</SYMBOL>
+		<RECTANGLE a='182.00000,118.00000' b='195.00000,128.00000' style='5' fill='0'/>
+		<SYMBOL id='2' pos='200.00000,81.00000' part='0' rotate='0' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
+			<FIELD type='0' description='Ref' value='D?' show='0' pos='1.00000,-2.60000'/>
+			<FIELD type='0' description='Name' value='RGB' show='1' pos='1.00000,-5.00000'/>
+			<HINT pin='1' net='10'/>
+			<HINT pin='2' net='11'/>
+		</SYMBOL>
+		<RECTANGLE a='193.00000,72.00000' b='210.00000,83.00000' style='4' fill='0'/>
+		<WIRE a='202.00000,83.00000' b='202.00000,88.00000'/>
+		<WIRE a='202.00000,72.00000' b='202.00000,68.00000'/>
+		<WIRE a='193.00000,77.00000' b='154.00000,77.00000'/>
+		<POWER pos='91.00000,88.00000' which='0' direction='0'>5v</POWER>
+		<POWER pos='77.00000,88.00000' which='0' direction='1'>0v</POWER>
+		<TEXT pos='103.00000,93.00000' direction='3' font='8' color='000000'>Optional</TEXT>
+		<POWER pos='71.00000,66.00000' which='0' direction='1'>0v</POWER>
+		<TEXT pos='132.00000,96.00000' direction='3' font='4' color='000000'>A0</TEXT>
+		<TEXT pos='182.00000,117.00000' direction='3' font='4' color='000000'>Grn</TEXT>
+		<TEXT pos='182.00000,112.00000' direction='3' font='4' color='000000'>Brn</TEXT>
+		<TEXT pos='182.00000,106.00000' direction='3' font='4' color='000000'>Org</TEXT>
+		<TEXT pos='181.00000,67.00000' direction='3' font='4' color='000000'>Red</TEXT>
+		<TEXT pos='182.00000,87.00000' direction='3' font='4' color='000000'>Blk</TEXT>
+		<TEXT pos='182.00000,76.00000' direction='3' font='4' color='000000'>Yel</TEXT>
+		<WIRE a='84.00000,94.00000' b='130.00000,94.00000'/>
+		<SYMBOL id='3' pos='91.00000,67.00000' part='0' rotate='3' can_scale='0' show_power='0' scale_x='1.00000' scale_y='1.00000'>
+			<FIELD type='0' description='Ref' value='S?' show='0' pos='-25.00000,3.00000'/>
+			<FIELD type='0' description='Name' value='Reset / Zero' show='1' pos='-28.00000,-5.00000'/>
+			<HINT pin='1' net='15'/>
+			<HINT pin='2' net='1'/>
+		</SYMBOL>
+		<WIRE a='130.00000,114.00000' b='101.00000,114.00000'/>
+		<TEXT pos='68.00000,115.00000' direction='3' font='3' color='000000'>Relay output (low = ON)</TEXT>
+		<TEXT pos='132.00000,116.00000' direction='3' font='8' color='000000'>5</TEXT>
+		<WIRE style='1' a='154.00000,88.00000' b='163.00000,97.00000'/>
+		<WIRE style='1' a='163.00000,97.00000' b='162.00000,96.00000'/>
+		<WIRE style='1' a='163.00000,97.00000' b='212.00000,97.00000'/>
+		<WIRE style='1' a='212.00000,97.00000' b='221.00000,88.00000'/>
+		<TEXT pos='180.00000,96.00000' direction='3' font='4' color='000000'>screen</TEXT>
+		<TEXT pos='180.00000,126.00000' direction='3' font='4' color='000000'>Max 150mm</TEXT>
+		<POLYGON pos='160.00000,126.00000' style='4' fill='0' polygon='0'>
+			<POINT pos='0.00000,0.00000' arc='0'/>
+			<POINT pos='55.00000,0.00000' arc='0'/>
+		</POLYGON>
+		<TEXT pos='60.00000,120.00000' direction='3' font='0' color='000000'>Must be  &gt;15mA with flyback protection</TEXT>
+	</TinyCAD>
+</TinyCADSheets>
