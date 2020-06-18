@@ -24,7 +24,7 @@ MovementSwitch is a Arduino project designed to work with a range of Arduino boa
 
 See also this [TinyCad Diagram](https://github.com/AceCentre/MovementSwitch/blob/master/MovementSwitchSCM.dsn) :
 
-<img src="https://raw.githubusercontent.com/AceCentre/MovementSwitch/master/MovementSwitch.png" width="600">
+<img src="https://raw.githubusercontent.com/AceCentre/MovementSwitch/master/MovementSwitchSCM.png" width="600">
 
 
 ### Usage
@@ -63,7 +63,12 @@ All the Arduino code is in the sub-directory **MovementSwitch**
 * F_MonitorLight.ino - Configuaration File for settings
 
 
-** NB: You will need the [I2Cdevlib-MPU6050](https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050) Library added to your Arduino code - along with the [Adafruit Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Library.**
+### Required libraries 
+
+You will need **TWO** libraries in your Arduino library folder for this to work:
+
+* [I2Cdevlib-MPU6050](https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050) Library 
+* [Adafruit Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Library
  
 
 
