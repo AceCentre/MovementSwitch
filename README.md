@@ -14,9 +14,9 @@ MovementSwitch is a Arduino project designed to work with a range of Arduino boa
 
 ## Arduino wiring
 
-* **Pin** 4 - Switch/Pushbutton **State**: Active Low (External switch)
-* **Pin** A0 - Potentiometer	**State**: Active Low (External switch)
-* **Pin** 5 - Switch Output/Relay	**State**: Active Low (External switch)
+* **Pin** 4 - Switch/Pushbutton **State**: Active Low 
+* **Pin** A0 - Potentiometer	**State**: Active Low 
+* **Pin** 5 - Switch Output/Relay	**State**: Active Low 
 * **Pin** 3 -  SCL of GY-521
 * **Pin** 2 -  SDA of GY-521
 * **Pin** 7 -  INT of GY-521
@@ -74,8 +74,8 @@ You will need **TWO** libraries in your Arduino library folder for this to work:
 
 ## Credits
 
-* Graham Law - Check out [http://celticmagic.org] for some great AT hardware. 
-* Gerard Cullen [http://www.rhn.org.uk] - Original inspiration and version 1 of this project was down to Gerard
+* Graham Law - Check out <http://celticmagic.org> for some great AT hardware. 
+* Gerard Cullen <http://www.rhn.org.uk> - Original inspiration and version 1 of this project was down to Gerard
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
