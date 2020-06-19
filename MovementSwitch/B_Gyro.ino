@@ -1,4 +1,6 @@
 
+// Tutorial on using the Gyro..,.
+// https://www.mschoeffler.de/2017/10/05/tutorial-how-to-use-the-gy-521-module-mpu-6050-breakout-board-with-the-arduino-uno/
 
 
 //*******************************************************************************************************************
@@ -12,7 +14,7 @@ static float zero_offset_f      = 0.0;
 static float output_filtered_f  = 0.0;
 
 #define NOD_BASE_GAIN   10000.0      
-#define PRIMARY_FILER       0.1        // 0.001 -> 1.0 (off)
+#define PRIMARY_FILTER       0.1        // 0.001 -> 1.0 (off)
 
   mpu.dmpGetQuaternion        (&q, fifoBuffer);
   mpu.dmpGetGravity           (&gravity, &q);
@@ -30,7 +32,7 @@ static float output_filtered_f  = 0.0;
    }         
                              
   f1 = f1 - zero_offset_f;                                                                  // apply offset
-  output_filtered_f = output_filtered_f + ((f1 - output_filtered_f) * PRIMARY_FILER );      // apply filter
+  output_filtered_f = output_filtered_f + ((f1 - output_filtered_f) * PRIMARY_FILTER );     // apply filter
   
   if (cmd != GYRO_NO_ZERO_TRACK)                                                            // slow track zero offset if enabled from main state machine
    {

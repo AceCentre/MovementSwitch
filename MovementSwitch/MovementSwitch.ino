@@ -139,33 +139,33 @@ MPU6050 mpu;
 // Hardware Definitions     *****************************************************************************************
 //*******************************************************************************************************************
 
-#define RGB_LED_PIN     9
-#define PB_INPUT_PIN    4
-#define INTERRUPT_PIN   7  
-#define POT_AO_GAIN    A0
-#define NUM_PIXEL_LEDS  1
-#define RELAY_OUT       5
-
-Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_PIXEL_LEDS, RGB_LED_PIN , NEO_GRB + NEO_KHZ800);
+  #define RGB_LED_PIN     9
+  #define PB_INPUT_PIN    4
+  #define INTERRUPT_PIN   7  
+  #define POT_AO_GAIN    A0
+  #define NUM_PIXEL_LEDS  1
+  #define RELAY_OUT       5
+  
+  Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_PIXEL_LEDS, RGB_LED_PIN , NEO_GRB + NEO_KHZ800);
 
 
 //*************************************************************************************************
 // MONITOR LIGHT **********************************************************************************
 //*************************************************************************************************
 
-//Shorthands
-#define  d0              di[0]
-#define  d1              di[1]
-#define  d2              di[2]
-#define  d3              di[3]
-#define  d4              di[4]
-#define  d5              di[5]
-#define  d6              di[6]
-#define  d7              di[7]
-
-#define DEB_ARRAY_SIZE  8
-static int di[DEB_ARRAY_SIZE];          // main debug array (ints)
-static int di_shadow[DEB_ARRAY_SIZE];
+  //Shorthands
+  #define  d0              di[0]
+  #define  d1              di[1]
+  #define  d2              di[2]
+  #define  d3              di[3]
+  #define  d4              di[4]
+  #define  d5              di[5]
+  #define  d6              di[6]
+  #define  d7              di[7]
+  
+  #define DEB_ARRAY_SIZE  8
+  static int di[DEB_ARRAY_SIZE];          // main debug array (ints)
+  static int di_shadow[DEB_ARRAY_SIZE];
 
 
 
@@ -176,14 +176,14 @@ static int di_shadow[DEB_ARRAY_SIZE];
 
 
 // LED colours
-#define NO_COLOURS 10
-#define BRIGHTNESS 100
-#define xb  *BRIGHTNESS)/100
-//                                     0       1       2       3       4       5       6       7       8     9
-  enum                              { BLK,    RED,    GRN,    BLU,    YEL,    PUR,    CYN,    BLK2,   WHT,  WHTmax  };
-  static const byte R[NO_COLOURS] = {(000 xb,(255 xb,(000 xb,(000 xb,(255 xb,(255 xb,(000 xb,(000 xb,(127 xb,(255 xb };
-  static const byte G[NO_COLOURS] = {(000 xb,(000 xb,(255 xb,(000 xb,(255 xb,(000 xb,(255 xb,(000 xb,(127 xb,(255 xb };
-  static const byte B[NO_COLOURS] = {(000 xb,(000 xb,(000 xb,(255 xb,(000 xb,(255 xb,(255 xb,(000 xb,(127 xb,(255 xb }; 
+  #define NO_COLOURS 10
+  #define BRIGHTNESS 100
+  #define xb  *BRIGHTNESS)/100
+  //                                     0       1       2       3       4       5       6       7       8     9
+    enum                              { BLK,    RED,    GRN,    BLU,    YEL,    PUR,    CYN,    BLK2,   WHT,  WHTmax  };
+    static const byte R[NO_COLOURS] = {(000 xb,(255 xb,(000 xb,(000 xb,(255 xb,(255 xb,(000 xb,(000 xb,(127 xb,(255 xb };
+    static const byte G[NO_COLOURS] = {(000 xb,(000 xb,(255 xb,(000 xb,(255 xb,(000 xb,(255 xb,(000 xb,(127 xb,(255 xb };
+    static const byte B[NO_COLOURS] = {(000 xb,(000 xb,(000 xb,(255 xb,(000 xb,(255 xb,(255 xb,(000 xb,(127 xb,(255 xb }; 
  
 
 
@@ -236,7 +236,7 @@ void SM_10ms(char mplex)
     case 1:
       {
       if (SENSITIVITY > 0)  { trig_threshold  = 1050 - SENSITIVITY; }               // use sensitivity value from header
-      else                  { trig_threshold  = 1050 - analogRead(POT_AO_GAIN); }   // or use A) input
+      else                  { trig_threshold  = 1050 - analogRead(POT_AO_GAIN); }   // or use A0 input
       break;
       }
     case 2:
@@ -277,7 +277,7 @@ void HW_ConfigInit (void)
   pinMode(RGB_LED_PIN,    OUTPUT);
   pinMode(RELAY_OUT,      OUTPUT); 
   pinMode(INTERRUPT_PIN,  INPUT);
-  pinMode(2,              INPUT_PULLUP);   // force wire / SPI to use pull ups
+  pinMode(2,              INPUT_PULLUP);   // force wire / I2C to use pull ups
   pinMode(3,              INPUT_PULLUP);  
   pinMode(PB_INPUT_PIN,   INPUT_PULLUP);
   pinMode(POT_AO_GAIN ,   INPUT);

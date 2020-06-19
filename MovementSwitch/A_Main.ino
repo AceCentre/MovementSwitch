@@ -23,13 +23,13 @@ d7 = a_gyro_sm;
    GyroProcessorInit();    
    a_gyro_timer = 100;
    a_gyro_sm = SM_INIT;
-   digitalWrite(RELAY_OUT, HIGH);                                 // drive external relay output OFF (high)    
+   digitalWrite(RELAY_OUT, HIGH);                                // drive external relay output OFF (high)    
    break;
    }
 
   case SM_INIT: 
    { 
-   if (a_gyro_timer > 0)                                         // wait forGyro to settle on boot
+   if (a_gyro_timer > 0)                                         // wait for Gyro to settle on boot
     {
     B_GyroRead(GYRO_NORMAL);  
     break; 
