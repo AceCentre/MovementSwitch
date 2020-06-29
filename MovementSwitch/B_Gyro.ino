@@ -3,50 +3,132 @@
 // https://www.mschoeffler.de/2017/10/05/tutorial-how-to-use-the-gy-521-module-mpu-6050-breakout-board-with-the-arduino-uno/
 
 
+
+bool B_GyroRead(byte cmd)  
+{
+  if (detection_style == DETECT_STYLE_3D) { return GyroRead_3D(cmd); }      // split call to appriate function
+  else                                    { return GyroRead_2D(cmd); }
+}
+
+
 //*******************************************************************************************************************
-// Gyro Data Processor       ****************************************************************************************
+// Gyro 3D Processor     ****************************************************************************************
 //*******************************************************************************************************************
 
-bool B_GyroRead(byte cmd)     // returns 0 if ok & 1 if problem
+
+bool GyroRead_3D(byte cmd)     // returns 0 if ok & 1 if problem
+{
+#define BASE_GAIN_3D     10000.0        // vector arithmetic results in longer diagonal vectors than 2D so compensate with reduced gain
+#define PRIMARY_FILTER       0.05        // 0.001 -> 1.0 (off)
+enum { RN,RT,NT };  
+float  f1;
+static float zero_offset_f[3]       = {0.0,0.0,0.0};
+static float output_filtered_f[3]   = {0.0,0.0,0.0};
+static float output_peak_f[3]       = {0.0,0.0,0.0};
+static float base_gain_f[3]         = {BASE_GAIN_3D,BASE_GAIN_3D,BASE_GAIN_3D};
+   
+  mpu.dmpGetQuaternion        (&q, fifoBuffer);
+  mpu.dmpGetGravity           (&gravity, &q);
+  mpu.dmpGetYawPitchRoll      (RNT, &q, &gravity);
+
+
+
+
+// Process data & auto centre
+   for (int i=0; i < 3; i++)
+    {
+    f1 = base_gain_f[i] * RNT[i];                                                                                                // apply base gain with polarity 
+
+    if (cmd == GYRO_ZERO)    
+     {
+     zero_offset_f[i]     = f1;                                                                                                  // capture present offsets
+     output_peak_f[i]     = 0.0;                                                                                                 // reset peak capture on GYRO_ZERO
+     output_filtered_f[i] = 0.0;
+     if (abs(f1) > 5000.0) { return 1; }                                                                                         // correction offset rather high so flag as an issue
+     }
+    else  // normal run
+     {
+     f1 = f1 - zero_offset_f[i];                                                                                                  // apply offsets
+     output_filtered_f[i] = output_filtered_f[i] + ((f1 - output_filtered_f[i]) * PRIMARY_FILTER );                               // apply filter
+     if (output_filtered_f[i] > 0) { zero_offset_f[i] += AUTO_CENTRE_RATE ; } else { zero_offset_f[i] -= AUTO_CENTRE_RATE ; }     // Intgrate to auto zero
+     }
+    }
+
+
+   if (cmd == GYRO_CAPTURE_POLARITIES)
+    {
+    for (int i=0; i < 3; i++)
+     {      
+     if (abs(output_filtered_f[i]) >= abs(output_peak_f[i])) { output_peak_f[i] = output_filtered_f[i]; }     //  store peaks and preserve polarity
+     }
+    }
+
+   
+   if (cmd == GYRO_LOAD_POLARITIES)
+    {
+    for (int i=0; i < 3; i++)
+     {     
+     #define REJECT_LEVEL 0.0             
+     if (abs(output_peak_f[i]) < REJECT_LEVEL) { base_gain_f[i] = 0.0; }
+     else
+      {
+      if (output_peak_f[i] < 0.0) { base_gain_f[i] = -BASE_GAIN_3D; }                               // polarity corection is part of the gain
+      else                        { base_gain_f[i] =  BASE_GAIN_3D; }
+      } 
+     }
+    }
+    
+  f1 = output_filtered_f[ROTATE] + output_filtered_f[NOD] + output_filtered_f[TILT];              // sum all polarity corected vectors
+  tilt_output = int(f1);
+return 0;
+}
+
+
+
+//*******************************************************************************************************************
+// Gyro 2D Processor     ****************************************************************************************
+//*******************************************************************************************************************
+
+
+
+bool GyroRead_2D(byte cmd)     // returns 0 if ok & 1 if problem
 {
 float  f1,f2;
 static float zero_offset_f      = 0.0;
 static float output_filtered_f  = 0.0;
 
-#define NOD_BASE_GAIN   10000.0      
+#define BASE_GAIN_2D     10000.0      
 #define PRIMARY_FILTER       0.1        // 0.001 -> 1.0 (off)
 
   mpu.dmpGetQuaternion        (&q, fifoBuffer);
   mpu.dmpGetGravity           (&gravity, &q);
   mpu.dmpGetYawPitchRoll      (RNT, &q, &gravity);
 
-  //   temp_RTN[ROTATE]  = (int)(RNT[ROTATE]* rotate_base_gain);                            // NOT USED
-  //   temp_RTN[TILT]    = (int)(RNT[TILT]  * tilt_base_gain);                              // NOT USED
-  
-  f1 = RNT[NOD] * NOD_BASE_GAIN;                                                            // apply fixed gain to enable transfer to int
+  f1 =  BASE_GAIN_2D * RNT[NOD];
   if (cmd == GYRO_ZERO)                                                                     // capture present value to use as an offset & return
    { 
    zero_offset_f = f1;
    if (abs(f1) > 5000.0) { return 1; }                                                      // correction offset rather high so flag as an issue
    return 0; 
    }         
-                             
-  f1 = f1 - zero_offset_f;                                                                  // apply offset
+  f1 = f1 - zero_offset_f;                                                                  // apply offset  
   output_filtered_f = output_filtered_f + ((f1 - output_filtered_f) * PRIMARY_FILTER );     // apply filter
   
-  if (cmd != GYRO_NO_ZERO_TRACK)                                                            // slow track zero offset if enabled from main state machine
-   {
-   if (output_filtered_f > 0) { zero_offset_f += AUTO_CENTRE_RATE ; } else { zero_offset_f -= AUTO_CENTRE_RATE ; }
-   }
+ 
+  if (output_filtered_f > 0) { zero_offset_f += AUTO_CENTRE_RATE ; } else { zero_offset_f -= AUTO_CENTRE_RATE ; }
+ 
 
-#ifdef POLARITY_R 
-  tilt_output  = -(int)(f1);                                                                 // load output as integer wrt to polarity of operation
-#else
-  tilt_output  =  (int)(f1); 
-#endif
+  switch (detection_style)
+   {
+   case DETECT_STYLE_2D:  
+    { tilt_output  =  (int)(f1);  break; }
+   case DETECT_STYLE_2DR:  
+    { tilt_output  = -(int)(f1);  break; }
+   case DETECT_STYLE_3D:      // SHOULD NOT HAPPEN
+    {   break; }
+   }
 return 0;
 }
-
 
 
 
@@ -94,7 +176,9 @@ void B_Gyro_Interrupt_Processor ()
         // reset so we can continue cleanly
         mpu.resetFIFO();
       //  fifoCount = mpu.getFIFOCount();  // will be zero after reset no need to ask
+      gyro_error = TRUE;
 #ifdef PRE_RELEASE_VERSION    
+       
         Serial.println(F("FIFO overflow!"));
 #endif
     // otherwise, check for DMP data ready interrupt (this should happen frequently)

@@ -17,7 +17,7 @@ static bool freeze = FALSE;
 // Command parse .................................................
 
 if (Serial.available())
-  {AAAAAAA
+  {
 
    if (Serial.peek() == 'f'  )   
     {  

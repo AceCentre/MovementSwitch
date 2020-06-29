@@ -1,11 +1,11 @@
 /*
-Version:      1.00  16/6/20
+Version:      1.10  16/6/20
 
 Open Source License - please leave this header intact.
 
-Project:      Tilt Switch Sensor based on the MPU650 Gyro
+Project:      Movement Detector based on the MPU650 Gyro
 Originator:   Celtic Magic     www.celticmagic.org
-Sponsored by: Ace Centre UK
+Sponsored by: ACE Centre UK
 
 Credits:
 Thanks and credit given to Gyro  Libraries from Jeff Rowberg & the Arduino community.
@@ -26,21 +26,26 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 POSSIBILITY OF SUCH DAMAGE.
 */
 
-
+enum {_2D,_3D,_USER}; 
 
 //*******************************************************************************************************************
 //***************  User Config      *********************************************************************************
 //*******************************************************************************************************************
 
-  #define KEY_CHAR                      'A'         // Keyboard charecter when pressed - enter ASCII number for charector eg 97 = a     or enclose for same result ie 'a'      32 = Space
-  #define POLARITY_N                                // _N = Normal  press down to click  OR    _R  for the reverse operation
-  #define SENSITIVITY                     0         // 1-1000     if set to zero then sensitivity pot used from pin AD0
-  #define AUTO_CENTRE_RATE              1.0         // 0.1 - 5.0  this is how strong the auto centering works 
+  #define  DETECTION_STYLE_USER                      // _USER  Manual select 2D or 3D  
+                                                     // _2D   fixed-  2D tilt normal    
+                                                     // _2DR  fixed-  2D tilt reverse 
+                                                     // _3D   fixed-  free space detection  
+                                               
+  #define  KEY_CHAR                      'X'         // Keyboard charecter when pressed - enter ASCII number for charector eg 97 = a     or enclose for same result ie 'a'      32 = Space
+  #define  SENSITIVITY                     0         // 1-1000     if set to zero then sensitivity pot used from pin AD0
+  #define  AUTO_CENTRE_RATE              0.2         // 0.1 - 1.0  this is how strong the auto centering works 
+  
 
-  #define OVER_TRAVEL_OFF_COLOUR        YEL
-  #define OFF_COLOUR                    WHT
-  #define ON_COLOUR                     GRN
-  #define OVER_TRAVEL_ON_COLOUR         GRN
+  #define  OVER_TRAVEL_OFF_COLOUR        YEL
+  #define  OFF_COLOUR                    WHT
+  #define  ON_COLOUR                     GRN
+  #define  OVER_TRAVEL_ON_COLOUR         GRN
   
     // valid colour codes     BLK,    RED,    GRN,    BLU,    YEL,    PUR,    CYN,  WHT,  WHTmax
     // Tip: if the Over Travel colours are not required then set them the same as the regular On / Off colours
@@ -52,8 +57,6 @@ POSSIBILITY OF SUCH DAMAGE.
   
   
   
-  
-
 
 
 
@@ -65,7 +68,9 @@ POSSIBILITY OF SUCH DAMAGE.
   
   
   
-//  #define PRE_RELEASE_VERSION
+// #define PRE_RELEASE_VERSION
+// #define FLIP_POT_TRUE
+
 
 //*******************************************************************************************************************
 //***************  Libraries        *********************************************************************************
@@ -100,9 +105,9 @@ MPU6050 mpu;
   #define TILT                      2
 
   const long MPLEX_INTERVAL_xxMS  = 5;     
-  enum {RUN_SM, RESET_SM };
-  enum {GYRO_NORMAL, GYRO_ZERO, GYRO_NO_ZERO_TRACK};
-
+  enum {RUN_SM, RESET_SM, FULL_RESET_SM };
+  enum {GYRO_NORMAL, GYRO_ZERO, GYRO_CAPTURE_POLARITIES, GYRO_LOAD_POLARITIES};
+  enum {DETECT_STYLE_2D, DETECT_STYLE_2DR, DETECT_STYLE_3D };
 
 //*******************************************************************************************************************
 // System Global Variables  *****************************************************************************************
@@ -110,7 +115,9 @@ MPU6050 mpu;
   static long PreviousMillis        = 0;
   static int  tilt_output           = 0;
   static int  trig_threshold        = 0;
-
+  static byte detection_style       = 0;
+  static int  polarity_3d           = 1;
+  static bool gyro_error            = FALSE;
 
 //*******************************************************************************************************************
 // MPU6050 Definitions     *****************************************************************************************
@@ -197,6 +204,19 @@ void setup()
   HW_ConfigInit();
   B_Gyro_setup();
   Keyboard.begin();
+
+#ifdef DETECTION_STYLE_2D 
+  detection_style = DETECT_STYLE_2D;
+#endif
+#ifdef DETECTION_STYLE_2DR
+  detection_style = DETECT_STYLE_2DR;
+#endif
+#ifdef DETECTION_STYLE_3D
+  detection_style = DETECT_STYLE_3D;
+#endif
+#ifdef DETECTION_STYLE_USER
+  while (B_UserModeChanger()); 
+#endif
 }
 
 
@@ -212,14 +232,14 @@ void loop()
   if (CurrentMillis - PreviousMillis > MPLEX_INTERVAL_xxMS)
    {
    PreviousMillis = CurrentMillis;
-   mplex_10ms++;    // 0...4 for ever
+   mplex_10ms++;    // 0...4 for ever   
    if (mplex_10ms > 4)  { mplex_10ms = 0; }
    SM_10ms(mplex_10ms);
    }
 }
 
 
-// Mutiplexer - called every XXms
+// Mutiplexer - called every 10ms
 //*************************************************************************
 
 void SM_10ms(char mplex)
@@ -230,13 +250,21 @@ void SM_10ms(char mplex)
   {
     case 0:
       {
-        F_MonitorLightRun();
+      F_MonitorLightRun();
       break;
       }
     case 1:
       {
       if (SENSITIVITY > 0)  { trig_threshold  = 1050 - SENSITIVITY; }               // use sensitivity value from header
-      else                  { trig_threshold  = 1050 - analogRead(POT_AO_GAIN); }   // or use A0 input
+      
+ //     else                  { trig_threshold  = 1050 - analogRead(POT_AO_GAIN); }   // or use A0 input
+
+
+#ifdef FLIP_POT_TRUE
+        else                  { trig_threshold  = analogRead(POT_AO_GAIN) + 26; }     // or use A0 input
+#else      
+        else                  { trig_threshold  = 1050 - analogRead(POT_AO_GAIN); }   // or use A0 input
+#endif      
       break;
       }
     case 2:
@@ -246,6 +274,7 @@ void SM_10ms(char mplex)
       }
     case 3:
       {
+      if (gyro_error) { gyro_error = FALSE;    A_Gryo_SM(FULL_RESET_SM); }
       // spare  
       break;
       }
