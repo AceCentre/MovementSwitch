@@ -1,5 +1,7 @@
 # MovementSwitch
 
+> Hardware project to make a very sensitive, self calibrating and auto-adjusting on-body switch
+
 MovementSwitch is a Arduino project designed to work with a range of Arduino boards (e.g. Arduino Pro micro) and a GY-521 Gyroscope. The device self calibrates to a users movement and a potentiometer can be used to adjust the sensitivity. 
 
 ![OpenAAC](https://img.shields.io/badge/OpenAAC-%F0%9F%92%AC-red?style=flat&link=https://www.openaac.org)
@@ -70,6 +72,17 @@ You will need **TWO** libraries in your Arduino library folder for this to work:
 * [I2Cdevlib-MPU6050](https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050) Library 
 * [Adafruit Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Library
  
+
+
+## Documentation Development
+
+We use [vuepress](http://vuepress.vuejs.org) for documentation 
+
+```bash
+yarn dev
+yarn build
+```
+
 
 
 ## Credits

@@ -5,7 +5,7 @@ Open Source License - please leave this header intact.
 
 Project:      Movement Detector based on the MPU650 Gyro
 Originator:   Celtic Magic     www.celticmagic.org
-Sponsored by: ACE Centre UK
+Sponsored by: Ace Centre UK
 
 Credits:
 Thanks and credit given to Gyro  Libraries from Jeff Rowberg & the Arduino community.
