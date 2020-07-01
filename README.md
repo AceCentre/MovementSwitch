@@ -67,7 +67,7 @@ All the Arduino code is in the sub-directory **MovementSwitch**
 
 ### Required libraries 
 
-You will need **TWO** libraries in your Arduino library folder for this to work:
+You will need **THREE** libraries in your Arduino library folder for this to work:
 
 * [I2Cdevlib](https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/I2Cdev) and the [I2Cdevlib-MPU6050](https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050) Library in your Library folder. 
 * [Adafruit Neopixel](https://github.com/adafruit/Adafruit_NeoPixel) Library
