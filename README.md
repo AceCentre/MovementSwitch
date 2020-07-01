@@ -60,9 +60,9 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 All the Arduino code is in the sub-directory **MovementSwitch**
 
 * MovementSwitch.ino - Main source code file
-* A_Main.ino - Library source code file for Morse Code related functions
-* B_Main.ino - Library header file for Morse Code related functions
-* F_MonitorLight.ino - Configuaration File for settings
+* A_Main.ino - Main Gyro State Machine
+* B_Gyro_.ino - Gyro Read data functions
+* F_MonitorLight.ino - Logging functions. "Light" because it is a lightweight version of a more complex version Graham uses in his projects
 
 
 ### Required libraries 
