@@ -87,7 +87,7 @@ yarn build
 
 ## Credits
 
-* Graham Law - Check out <http://celticmagic.org> for some great AT hardware. 
+* Graham Law - Check out <http://celticmagic.org> for some great AT hardware. Graham wrote *ALL** of this code. [See his page here which documents it from his side](https://www.celticmagic.org/movement-detector). 
 * Gerard Cullen <http://www.rhn.org.uk> - Original inspiration and version 1 of this project was down to Gerard
 
 ## License
