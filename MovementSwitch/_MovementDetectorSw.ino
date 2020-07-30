@@ -1,11 +1,14 @@
 /*
-Version:      1.10  16/6/20
+Version:      1.2  29/7/20
+
+1.2   FIXED  2D not reliably recalled after power up if in User mode
+
 
 Open Source License - please leave this header intact.
 
 Project:      Movement Detector based on the MPU650 Gyro
 Originator:   Celtic Magic     www.celticmagic.org
-Sponsored by: Ace Centre UK
+Sponsored by: ACE Centre UK
 
 Credits:
 Thanks and credit given to Gyro  Libraries from Jeff Rowberg & the Arduino community.
@@ -22,14 +25,12 @@ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
 SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
 INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE    
 POSSIBILITY OF SUCH DAMAGE.
 */
 
-enum {_2D,_3D,_USER}; 
-
 //*******************************************************************************************************************
-//***************  User Config      *********************************************************************************
+//***************  User Config      *********************************************************************************   
 //*******************************************************************************************************************
 
   #define  DETECTION_STYLE_USER                      // _USER  Manual select 2D or 3D  
@@ -37,12 +38,12 @@ enum {_2D,_3D,_USER};
                                                      // _2DR  fixed-  2D tilt reverse 
                                                      // _3D   fixed-  free space detection  
                                                
-  #define  KEY_CHAR                      'X'         // Keyboard charecter when pressed - enter ASCII number for charector eg 97 = a     or enclose for same result ie 'a'      32 = Space
+  #define  KEY_CHAR                      ' '         // Keyboard charecter when pressed - enter ASCII number for charector eg 97 = a     or enclose for same result ie 'a'      32 = Space
   #define  SENSITIVITY                     0         // 1-1000     if set to zero then sensitivity pot used from pin AD0
   #define  AUTO_CENTRE_RATE              0.2         // 0.1 - 1.0  this is how strong the auto centering works 
   
 
-  #define  OVER_TRAVEL_OFF_COLOUR        YEL
+  #define  OVER_TRAVEL_OFF_COLOUR        YEL    
   #define  OFF_COLOUR                    WHT
   #define  ON_COLOUR                     GRN
   #define  OVER_TRAVEL_ON_COLOUR         GRN
@@ -255,11 +256,7 @@ void SM_10ms(char mplex)
       }
     case 1:
       {
-      if (SENSITIVITY > 0)  { trig_threshold  = 1050 - SENSITIVITY; }               // use sensitivity value from header
-      
- //     else                  { trig_threshold  = 1050 - analogRead(POT_AO_GAIN); }   // or use A0 input
-
-
+      if (SENSITIVITY > 0)    { trig_threshold  = 1050 - SENSITIVITY; }               // use sensitivity value from header
 #ifdef FLIP_POT_TRUE
         else                  { trig_threshold  = analogRead(POT_AO_GAIN) + 26; }     // or use A0 input
 #else      
@@ -275,7 +272,6 @@ void SM_10ms(char mplex)
     case 3:
       {
       if (gyro_error) { gyro_error = FALSE;    A_Gryo_SM(FULL_RESET_SM); }
-      // spare  
       break;
       }
     case 4:

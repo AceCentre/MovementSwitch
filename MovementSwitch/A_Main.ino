@@ -1,4 +1,4 @@
-
+   
 
 //*******************************************************************************************************************
 // Main State Machine       *****************************************************************************************
@@ -100,9 +100,6 @@ d6 = trig_threshold;
   case SM_OFF: 
    {    
    B_GyroRead(GYRO_NORMAL);
-
-
-   
    if ( polarity_3d == 1)
     {
     if (tilt_output < -trig_threshold) { A_Led_Driver(100, OVER_TRAVEL_OFF_COLOUR ); }   // trigger in opposite direction - do nowt but indicate yellow
@@ -180,7 +177,7 @@ uint32_t c;
 
 byte B_UserModeChanger()
 {
-#define EE_PTR 1                      
+#define EE_PTR 10                      
 #define BIT_PAT_2D    0x5A
 #define BIT_PAT_3D    0xA5
 #define TOGGLE_RATE   16000
@@ -214,7 +211,7 @@ switch (sm)
   case 2:
   {
   A_Led_Driver(40, RED);   // 2D
-  if (digitalRead(PB_INPUT_PIN)) {    EEPROM.write(EE_PTR,BIT_PAT_3D );  detection_style = DETECT_STYLE_2D; return FALSE; }   // 2D selected on PB release     
+  if (digitalRead(PB_INPUT_PIN)) {    EEPROM.write(EE_PTR,BIT_PAT_2D );  detection_style = DETECT_STYLE_2D; return FALSE; }   // 2D selected on PB release     
   if (timer > 0) { break; }
   timer = TOGGLE_RATE;
   sm++;  

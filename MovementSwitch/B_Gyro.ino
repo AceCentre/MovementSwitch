@@ -31,9 +31,6 @@ static float base_gain_f[3]         = {BASE_GAIN_3D,BASE_GAIN_3D,BASE_GAIN_3D};
   mpu.dmpGetGravity           (&gravity, &q);
   mpu.dmpGetYawPitchRoll      (RNT, &q, &gravity);
 
-
-
-
 // Process data & auto centre
    for (int i=0; i < 3; i++)
     {
@@ -53,8 +50,7 @@ static float base_gain_f[3]         = {BASE_GAIN_3D,BASE_GAIN_3D,BASE_GAIN_3D};
      if (output_filtered_f[i] > 0) { zero_offset_f[i] += AUTO_CENTRE_RATE ; } else { zero_offset_f[i] -= AUTO_CENTRE_RATE ; }     // Intgrate to auto zero
      }
     }
-
-
+    
    if (cmd == GYRO_CAPTURE_POLARITIES)
     {
     for (int i=0; i < 3; i++)
@@ -62,8 +58,7 @@ static float base_gain_f[3]         = {BASE_GAIN_3D,BASE_GAIN_3D,BASE_GAIN_3D};
      if (abs(output_filtered_f[i]) >= abs(output_peak_f[i])) { output_peak_f[i] = output_filtered_f[i]; }     //  store peaks and preserve polarity
      }
     }
-
-   
+    
    if (cmd == GYRO_LOAD_POLARITIES)
     {
     for (int i=0; i < 3; i++)
@@ -78,7 +73,7 @@ static float base_gain_f[3]         = {BASE_GAIN_3D,BASE_GAIN_3D,BASE_GAIN_3D};
      }
     }
     
-  f1 = output_filtered_f[ROTATE] + output_filtered_f[NOD] + output_filtered_f[TILT];              // sum all polarity corected vectors
+  f1 = output_filtered_f[ROTATE] + output_filtered_f[NOD] + output_filtered_f[TILT];               // sum all polarity corected vectors
   tilt_output = int(f1);
 return 0;
 }
@@ -178,7 +173,6 @@ void B_Gyro_Interrupt_Processor ()
       //  fifoCount = mpu.getFIFOCount();  // will be zero after reset no need to ask
       gyro_error = TRUE;
 #ifdef PRE_RELEASE_VERSION    
-       
         Serial.println(F("FIFO overflow!"));
 #endif
     // otherwise, check for DMP data ready interrupt (this should happen frequently)
