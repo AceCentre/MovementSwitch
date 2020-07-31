@@ -104,13 +104,13 @@ d6 = trig_threshold;
     {
     if (tilt_output < -trig_threshold) { A_Led_Driver(100, OVER_TRAVEL_OFF_COLOUR ); }   // trigger in opposite direction - do nowt but indicate yellow
     else                               { A_Led_Driver(100, OFF_COLOUR); }                // good to go waiting trigger
-    if ( tilt_output > trig_threshold) { a_gyro_sm = SM_OFF_ON_0; }  // trigger ON    
+    if (tilt_output > trig_threshold) { a_gyro_sm = SM_OFF_ON_0; }                       // trigger ON    
     }
    else
     {
     if (tilt_output >   trig_threshold) { A_Led_Driver(100, OVER_TRAVEL_OFF_COLOUR ); }   // trigger in opposite direction - do nowt but indicate yellow
     else                                { A_Led_Driver(100, OFF_COLOUR); }                // good to go waiting trigger
-    if ( tilt_output < -trig_threshold) { a_gyro_sm = SM_OFF_ON_0; }  // trigger ON      
+    if (tilt_output < -trig_threshold) { a_gyro_sm = SM_OFF_ON_0; }                       // trigger ON      
     }
    break;
    }
