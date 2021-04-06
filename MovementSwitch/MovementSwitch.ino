@@ -1,4 +1,4 @@
-/*
+     /*
 Version:      1.2  29/7/20
 
 1.2   FIXED  2D not reliably recalled after power up if in User mode
@@ -27,7 +27,7 @@ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
 CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE    
 POSSIBILITY OF SUCH DAMAGE.
-*/
+*/   
 
 //*******************************************************************************************************************
 //***************  User Config      *********************************************************************************   
@@ -52,27 +52,11 @@ POSSIBILITY OF SUCH DAMAGE.
     // Tip: if the Over Travel colours are not required then set them the same as the regular On / Off colours
     // Recommend that at least the OVER_TRAVLE_OFF_COLOUR is used as if consistently operating it suggests that the sensitivity can be set lower.
 
-  
-  
 
-  
-  
-  
+//       #define FLIP_POT_TRUE
 
-
-
-
-
-
-
-  
-  
-  
   
 // #define PRE_RELEASE_VERSION
-// #define FLIP_POT_TRUE
-
-
 //*******************************************************************************************************************
 //***************  Libraries        *********************************************************************************
 //*******************************************************************************************************************
